@@ -282,6 +282,7 @@ def is_no(one_more_input):
 def main():
     # ===Modify codes below=============
     # 위의 코드를 포함하여 자유로운 수정이 가능함
+    replay = -1
     while True:
         print("Play Baseball")
         random_number = str(get_not_duplicated_three_digit_number())
@@ -294,27 +295,31 @@ def main():
                 else:
                     print("Wrong Input")
                     continue
-            else:
+        
+            score = get_strikes_or_ball(user_input, random_number)
+            print(f"Strikes : {score[0]}, Balls : {score[1]}")
+            if score == [3, 0]:
+                while True:
+                    print("You win, one more? (Y/N)")
+                    moregame = input()
+                    if is_yes(moregame):
+                        
+                        replay = 1
+                        break
+                    elif is_no(moregame):
+                        replay = 0
+                        break
+                    else:
+                        print("Wrong Input")
+                        continue
                 break
         if user_input == '0':
             break
-        score = get_strikes_or_ball(user_input, random_number)
-        print(f"Strikes : {score[0]}, Balls : {score[1]}")
-        if score == [3, 0]:
-            while True:
-                print("You win, one more? (Y/N)")
-                moregame = input()
-                if is_yes(moregame):
-                    replay = 1
-                    break
-                elif is_no(moregame):
-                    replay = 0
-                    break
-                else:
-                    print("Wrong Input")
-                    continue
-            if replay == 0:
-                break
+        elif replay == 0:
+            break    
+
+
+        
         
     # ==================================
     print("Thank you for using this program")
