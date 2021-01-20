@@ -282,8 +282,9 @@ def is_no(one_more_input):
 def main():
     # ===Modify codes below=============
     # 위의 코드를 포함하여 자유로운 수정이 가능함
-    replay = -1
+    
     while True:
+        replay = -1
         print("Play Baseball")
         random_number = str(get_not_duplicated_three_digit_number())
         print("Random Number is : ", random_number)
